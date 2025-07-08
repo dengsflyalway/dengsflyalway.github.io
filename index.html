@@ -121,13 +121,14 @@
   <div class="rain" id="rain"></div>
 
   <!-- 背景音乐 -->
-  <audio id="bgm" loop autoplay>
+  <audio id="bgm" loop>
     <source src="https://dengsflyalway.github.io/3.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
   <div class="music-btn" onclick="toggleMusic()">🎵 静音/播放</div>
 
   <script>
+    // 创建爱心雨
     const rainContainer = document.getElementById('rain');
     const heartChar = '❤';
     const dropCount = 80;
@@ -149,13 +150,28 @@
 
     // 音乐控制
     const bgm = document.getElementById('bgm');
+    
+    // 页面加载完成后自动播放音乐
+    document.addEventListener('DOMContentLoaded', () => {
+      // 尝试自动播放音乐
+      bgm.play().catch(e => {
+        console.log('自动播放失败:', e);
+        // 提示用户点击播放
+        document.querySelector('.music-btn').textContent = '🎵 点击播放音乐';
+      });
+    });
+
+    // 音乐控制函数
     function toggleMusic() {
       if (bgm.paused) {
         bgm.play();
+        document.querySelector('.music-btn').textContent = '🎵 静音/播放';
       } else {
         bgm.pause();
+        document.querySelector('.music-btn').textContent = '🔇 静音/播放';
       }
     }
   </script>
 </body>
 </html>
+    
