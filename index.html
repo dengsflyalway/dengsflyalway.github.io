@@ -1,11 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Hello GitHub Pages</title>
+  <meta charset="UTF-8">
+  <title>跳动的爱心</title>
+  <style>
+    body {
+      background-color: #ffe6ea;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .heart {
+      width: 100px;
+      height: 90px;
+      position: relative;
+      background-color: red;
+      transform: rotate(-45deg);
+      animation: heartbeat 1s infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 100px;
+      height: 90px;
+      position: absolute;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -50px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 50px;
+      top: 0;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: rotate(-45deg) scale(1);
+      }
+      25% {
+        transform: rotate(-45deg) scale(1.1);
+      }
+      50% {
+        transform: rotate(-45deg) scale(0.95);
+      }
+      75% {
+        transform: rotate(-45deg) scale(1.05);
+      }
+    }
+
+    .text {
+      position: absolute;
+      bottom: 50px;
+      font-size: 24px;
+      color: #d6336c;
+      text-align: center;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello, GitHub Pages!</h1>
-  <p>This is my first static website hosted on GitHub.</p>
+  <div class="heart"></div>
+  <div class="text">跳动的爱心，送给你 💖</div>
 </body>
 </html>
